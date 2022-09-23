@@ -1,10 +1,10 @@
-import * as prismicH from "@prismicio/helpers";
-import { PrismicLink, PrismicRichText, PrismicText } from "@prismicio/react";
-import { PrismicNextImage } from "@prismicio/next";
+import * as prismicH from '@prismicio/helpers';
+import { PrismicLink, PrismicRichText, PrismicText } from '@prismicio/react';
+import { PrismicNextImage } from '@prismicio/next';
 
-import { Bounded } from "../../components/Bounded";
-import { Heading } from "../../components/Heading";
-import { ConditionalWrap } from "../../components/ConditionalWrap";
+import { Bounded } from 'components/Bounded';
+import { Heading } from 'components/Heading';
+import { ConditionalWrap } from 'components/ConditionalWrap';
 
 const ImageCard = ({ item }) => {
   const image = item.image;
@@ -16,7 +16,7 @@ const ImageCard = ({ item }) => {
           <ConditionalWrap
             condition={prismicH.isFilled.link(item.buttonLink)}
             wrap={({ children }) => (
-              <PrismicLink field={item.buttonLink} tabIndex="-1">
+              <PrismicLink field={item.buttonLink} tabIndex={-1}>
                 {children}
               </PrismicLink>
             )}
@@ -31,7 +31,7 @@ const ImageCard = ({ item }) => {
       {prismicH.isFilled.link(item.buttonLink) && (
         <div>
           <PrismicLink field={item.buttonLink} className="font-semibold">
-            {item.buttonText || "More Info"}
+            {item.buttonText || 'More Info'}
           </PrismicLink>
         </div>
       )}

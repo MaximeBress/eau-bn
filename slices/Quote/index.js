@@ -1,8 +1,8 @@
-import * as prismicH from "@prismicio/helpers";
-import { PrismicRichText, PrismicText } from "@prismicio/react";
-import clsx from "clsx";
+import * as prismicH from '@prismicio/helpers';
+import { PrismicText } from '@prismicio/react';
+import clsx from 'clsx';
 
-import { Bounded } from "../../components/Bounded";
+import { Bounded } from 'components/Bounded';
 
 const Quote = ({ slice }) => {
   return (
@@ -12,9 +12,9 @@ const Quote = ({ slice }) => {
           <blockquote>
             <p
               className={clsx(
-                "text-4xl font-medium leading-tight md:text-5xl md:leading-tight",
+                'text-4xl font-medium leading-tight md:text-5xl md:leading-tight',
                 !prismicH.isFilled.keyText(slice.primary.source) &&
-                  "text-center"
+                'text-center',
               )}
             >
               <span className="-ml-3.5 select-none text-slate-400 md:-ml-5">
