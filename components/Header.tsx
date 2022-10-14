@@ -5,7 +5,6 @@ import { PageProps } from 'typings';
 import { Bounded } from 'components/Bounded';
 
 export const Header = ({ navigation, settings }: PageProps) => {
-
   return (
     <Bounded as="header" yPadding="sm">
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 leading-none">
@@ -24,6 +23,16 @@ export const Header = ({ navigation, settings }: PageProps) => {
                 </PrismicLink>
               </li>
             ))}
+            <li className="font-semibold tracking-tight text-slate-800">
+              <PrismicLink href="/realisations">
+                Nos Réalisations
+              </PrismicLink>
+            </li>
+            <li className="font-semibold tracking-tight text-slate-800">
+              <PrismicLink href="/contact">
+                Contact
+              </PrismicLink>
+            </li>
           </ul>
         </nav>
       </div>
