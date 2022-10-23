@@ -1,0 +1,59 @@
+import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
+import { SliceZone } from '@prismicio/react';
+import * as prismicH from '@prismicio/helpers';
+
+import { Layout } from 'components/Layout';
+import { createClient } from 'prismicio';
+import { components } from 'slices';
+import { PageProps } from 'typings';
+
+const Page = ({ page, navigation, settings }: PageProps) => {
+  return (
+    <Layout navigation={navigation} settings={settings}>
+      <Head>
+        <title>
+          {prismicH.asText(page.data.title)} |{' '}
+          {prismicH.asText(settings.data.siteTitle)}
+        </title>
+      </Head>
+      <SliceZone slices={page.data.slices} components={components} />
+    </Layout>
+  );
+};
+
+export default Page;
+
+export const getStaticProps: GetStaticProps = async ({ params, locale, previewData }) => {
+  const client = createClient({ previewData });
+  if (!params?.uid) {
+    return { notFound: true };
+  }
+  const page = await client.getByUID('page', params.uid as string, { lang: locale });
+  const navigation = await client.getSingle('navigation', { lang: locale });
+  const settings = await client.getSingle('settings', { lang: locale });
+
+  return {
+    props: {
+      page,
+      navigation,
+      settings,
+    },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const client = createClient();
+
+  const pages = await client.getAllByType('page', { lang: '*' });
+
+  return {
+    paths: pages.map((page) => {
+      return {
+        params: { uid: page.uid },
+        locale: page.lang,
+      };
+    }),
+    fallback: false,
+  };
+};

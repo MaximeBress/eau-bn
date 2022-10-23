@@ -1,0 +1,26 @@
+{
+  "id": "achievement_list",
+  "label": "Liste des réalisations",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        }
+      },
+      "highlighted": {
+        "type": "Link",
+        "config": {
+          "label": "Mis en avant",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "select": null
+        }
+      }
+    }
+  }
+}
