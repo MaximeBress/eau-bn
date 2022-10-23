@@ -1,8 +1,11 @@
+import { PrismicLink } from '@prismicio/react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import Image from 'next/image'
+import { createClient } from 'prismicio';
 
 import { Layout } from 'components/Layout';
-import { createClient } from 'prismicio';
+import { Bounded } from 'components/Bounded';
 
 type Props = {
   navigation: any;
@@ -11,6 +14,8 @@ type Props = {
 }
 
 const Achievements = ({ navigation, settings, achievements }: Props) => {
+console.log(achievements)
+
   return (
     <Layout navigation={navigation} settings={settings}>
       <Head>
@@ -19,24 +24,22 @@ const Achievements = ({ navigation, settings, achievements }: Props) => {
         </title>
       </Head>
 
-      <section className="px-6 py-20 md:py-28 bg-white pt-0 md:pt-0">
-        <div className="mx-auto w-full max-w-6xl">
-          <h1 className="text-xl mb-4">Liste de nos réalisations</h1>
-          <div className="flex">
-            {achievements && achievements.map((achievement: any, index: number) =>
-              <a href={achievement.url} key={index} className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-50 hover:border-gray-100">
-                <img className="rounded-t-lg" src={achievement.data.image.url} alt="" />
-                <div className="p-5">
-                  <a href="#">
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                  </a>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                </div>
-              </a>,
-            )}
-          </div>
+      <Bounded>
+        <div className="text-center max-w-lg flex flex-col gap-5 mx-auto mb-14">
+          <h1 className="text-6xl text-blue-500 font-bold">Nos Réalisations</h1>
+          <p className="text-lg">From year to year we strive to invent the most innovative technology that is used by both small enterprises and space enterprises.</p>
         </div>
-      </section>
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {achievements.length > 0 && achievements.map((achievement: any, index: number) =>
+            <PrismicLink href={achievement.url} key={index}>
+              <figure className="relative max-w-sm transition-all duration-300 cursor-pointer filter grayscale-0 hover:grayscale">
+                <img className="rounded-lg" src={achievement.data.image.url} alt={achievement.data.title} />
+                <p className="absolute bottom-6 px-4 text-lg text-white">{achievement.data.title}</p>
+              </figure>
+            </PrismicLink>
+          )}
+        </section>
+      </Bounded>
 
     </Layout>
   );

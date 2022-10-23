@@ -2,7 +2,6 @@ import { createClient } from 'prismicio';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-nextjs-toast';
 
 import { Layout } from 'components/Layout';
 import { Bounded } from 'components/Bounded';
@@ -31,11 +30,6 @@ const Contact = ({ navigation, settings }: Props) => {
       });
       if(response.status === 200) {
         reset();
-        console.log(response);
-        toast.notify('Votre message a bien été envoyé !', {
-          duration: 2000,
-          type: "success"
-        });
       }
     } catch (error) {
       // toast error message. whatever you wish

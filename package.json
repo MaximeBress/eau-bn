@@ -26,8 +26,7 @@
         "node-mailjet": "^5.1.1",
         "react": "18.2.0",
         "react-dom": "18.2.0",
-        "react-hook-form": "^7.37.0",
-        "react-nextjs-toast": "^1.2.5"
+        "react-hook-form": "^7.37.0"
     },
     "devDependencies": {
         "@prismicio/types": "^0.2.0",
