@@ -43,6 +43,9 @@ const Contact = ({ navigation, settings }: Props) => {
         <title>
           Contactez nous
         </title>
+        <meta name="description" content="Contactez Eau BN via notre formulaire de contact" key="description" />
+        <meta property="og:title" content="Formulaire de contact Eau BN" key="title" />
+        <meta property="og:description" content="Contactez Eau BN via notre formulaire de contact" key="og:description" />
       </Head>
 
       <Bounded>

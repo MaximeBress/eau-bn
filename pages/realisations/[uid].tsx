@@ -16,9 +16,10 @@ const Achievement = ({ achievement, navigation, settings }: Props) => {
   return (
     <Layout navigation={navigation} settings={settings}>
       <Head>
-        <title>
-          {achievement.data.title}
-        </title>
+        <title>{achievement.data.meta_title}</title>
+        <meta name="description" content={achievement.data.meta_description} key="description" />
+        <meta property="og:title" content={achievement.data.meta_title} key="title" />
+        <meta property="og:description" content={achievement.data.meta_description} key="og:description" />
       </Head>
       <SliceZone slices={achievement.data.slices} components={components} />
     </Layout>

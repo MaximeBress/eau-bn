@@ -99,7 +99,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\Hero\\default\\preview.png",
+            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/Hero/default/preview.png",
             "width": 800,
             "height": 694
           }
@@ -201,12 +201,12 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\Image\\default\\preview.png",
+            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/Image/default/preview.png",
             "width": 800,
             "height": 530
           },
           "banner": {
-            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\Image\\banner\\preview.png",
+            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/Image/banner/preview.png",
             "width": 800,
             "height": 363
           }
@@ -397,7 +397,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\ImageCards\\default\\preview.png",
+            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/ImageCards/default/preview.png",
             "width": 800,
             "height": 1167
           }
@@ -467,7 +467,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\Quote\\default\\preview.png",
+            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/Quote/default/preview.png",
             "width": 800,
             "height": 392
           }
@@ -579,12 +579,12 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\Text\\default\\preview.png",
+            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/Text/default/preview.png",
             "width": 800,
             "height": 516
           },
           "twoColumns": {
-            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\Text\\twoColumns\\preview.png",
+            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/Text/twoColumns/preview.png",
             "width": 800,
             "height": 276
           }
@@ -743,12 +743,12 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\TextWithImage\\default\\preview.png",
+            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/TextWithImage/default/preview.png",
             "width": 800,
             "height": 656
           },
           "withButton": {
-            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\TextWithImage\\withButton\\preview.png",
+            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/TextWithImage/withButton/preview.png",
             "width": 800,
             "height": 424
           }

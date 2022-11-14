@@ -12,10 +12,10 @@ const Page = ({ page, navigation, settings }: PageProps) => {
   return (
     <Layout navigation={navigation} settings={settings}>
       <Head>
-        <title>
-          {prismicH.asText(page.data.title)} |{' '}
-          {prismicH.asText(settings.data.siteTitle)}
-        </title>
+        <title>{page.data.meta_title}</title>
+        <meta name="description" content={page.data.meta_description} key="description" />
+        <meta property="og:title" content={page.data.meta_title} key="title" />
+        <meta property="og:description" content={page.data.meta_description} key="og:description" />
       </Head>
       <SliceZone slices={page.data.slices} components={components} />
     </Layout>

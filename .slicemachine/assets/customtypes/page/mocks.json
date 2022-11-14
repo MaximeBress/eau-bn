@@ -1,18 +1,35 @@
 {
-  "id": "354064c7-c123-4383-b6ef-0f5cf3da0ddd",
-  "uid": "provident-quibusdam-voluptatum",
+  "id": "mock-doc-id",
+  "url": null,
   "type": "page",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
   "data": {
     "title": [
       {
         "type": "heading1",
-        "text": "Matrix sexy content",
+        "text": "Breath",
         "spans": []
       }
     ],
     "parent": {
-      "link_type": "Web",
-      "url": "http://google.com"
-    }
+      "id": "mock_document_id",
+      "link_type": "Document",
+      "type": "page",
+      "tags": [],
+      "lang": "en-us",
+      "slug": null,
+      "first_publication_date": "1970-01-01T00:00:01+0000",
+      "last_publication_date": "1970-01-01T01:00:00+0000"
+    },
+    "meta_title": "dried",
+    "meta_description": "compare",
+    "slices": []
   }
 }

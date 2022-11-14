@@ -1,7 +1,6 @@
 import { PrismicLink } from '@prismicio/react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import Image from 'next/image'
 import { createClient } from 'prismicio';
 
 import { Layout } from 'components/Layout';
@@ -14,14 +13,13 @@ type Props = {
 }
 
 const Achievements = ({ navigation, settings, achievements }: Props) => {
-console.log(achievements)
-
   return (
     <Layout navigation={navigation} settings={settings}>
       <Head>
-        <title>
-          Nos réalisations
-        </title>
+        <title>Nos réalisations</title>
+        <meta name="description" content="Voici la liste des réalisations Eau BN" key="description" />
+        <meta property="og:title" content="Nos réalisations" key="title" />
+        <meta property="og:description" content="Voici la liste des réalisations Eau BN" key="og:description" />
       </Head>
 
       <Bounded>
