@@ -1,6 +1,6 @@
 {
-  "id": "page",
-  "label": "Page",
+  "id": "achievement",
+  "label": "Réalisation",
   "repeatable": true,
   "status": true,
   "json": {
@@ -10,25 +10,6 @@
         "config": {
           "label": "UID",
           "placeholder": ""
-        }
-      },
-      "title": {
-        "type": "StructuredText",
-        "config": {
-          "label": "Title",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "single": "heading1"
-        }
-      },
-      "parent": {
-        "type": "Link",
-        "config": {
-          "label": "Parent",
-          "select": "document",
-          "customtypes": [
-            "page"
-          ]
         }
       },
       "meta_title": {
@@ -45,18 +26,27 @@
           "placeholder": ""
         }
       },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
             "hero": {
-              "type": "SharedSlice"
-            },
-            "quote": {
-              "type": "SharedSlice"
-            },
-            "text": {
               "type": "SharedSlice"
             },
             "image": {
@@ -66,6 +56,12 @@
               "type": "SharedSlice"
             },
             "text_with_image": {
+              "type": "SharedSlice"
+            },
+            "text": {
+              "type": "SharedSlice"
+            },
+            "quote": {
               "type": "SharedSlice"
             }
           }

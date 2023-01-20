@@ -5,3 +5,52 @@
 [data-collapsible="true"].bg-white + [data-collapsible="true"].bg-white {
   @apply pt-0 md:pt-0;
 }
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Quicksand;
+}
+
+.icon-mail:before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  height: 165px;
+  width: 165px;
+  z-index: 1;
+  background: url(/assets/img/mail.png) no-repeat;
+}
+
+.toast-message-container {
+  top: 0;
+  bottom: unset;
+  right: 60px;
+}
+
+@media screen and (max-width: 767px) {
+  .icon-mail:before {
+    display: none;
+  }
+}
+
+h1 {
+  @apply text-6xl;
+}
+
+h2 {
+  @apply text-4xl my-3;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+a {
+  @apply text-blue-500 hover:text-orange-500
+}
+p {
+   @apply pb-2;
+}

@@ -1,8 +1,8 @@
-import * as prismic from "@prismicio/client";
-import * as prismicH from "@prismicio/helpers";
-import * as prismicNext from "@prismicio/next";
+import * as prismic from '@prismicio/client';
+import { CreateClientConfig } from '@prismicio/next';
+import * as prismicNext from '@prismicio/next';
 
-import sm from "./sm.json";
+import sm from './sm.json';
 
 /**
  * The project's Prismic repository name.
@@ -15,9 +15,9 @@ export const repositoryName = prismic.getRepositoryName(sm.apiEndpoint);
  *
  * @type {prismicH.LinkResolverFunction}
  */
-export const linkResolver = (doc) => {
-  if (doc.url === "/home") {
-    return "/";
+export const linkResolver = (doc: any) => {
+  if (doc.url === '/home') {
+    return '/';
   }
 };
 
@@ -27,12 +27,14 @@ export const linkResolver = (doc) => {
  *
  * @param config {prismicNext.CreateClientConfig} - A configuration object to
  */
-export const createClient = (config = {}) => {
+export const createClient = (config: CreateClientConfig = {}) => {
   const client = prismic.createClient(sm.apiEndpoint, {
     routes: [
-      { type: "page", path: "/:uid" },
-      { type: "settings", path: "/" },
-      { type: "navigation", path: "/" },
+      { type: 'page', path: '/:uid' },
+      { type: 'achievement', path: '/realisations' },
+      { type: 'achievement', path: '/realisations/:uid' },
+      { type: 'settings', path: '/' },
+      { type: 'navigation', path: '/' },
     ],
   });
 
