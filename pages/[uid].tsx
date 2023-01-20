@@ -1,10 +1,9 @@
+import { SliceZone } from '@prismicio/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
-import { SliceZone } from '@prismicio/react';
-import * as prismicH from '@prismicio/helpers';
+import { createClient } from 'prismicio';
 
 import { Layout } from 'components/Layout';
-import { createClient } from 'prismicio';
 import { components } from 'slices';
 import { PageProps } from 'typings';
 

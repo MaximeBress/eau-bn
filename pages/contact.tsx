@@ -1,14 +1,22 @@
-import { createClient } from 'prismicio';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { createClient } from 'prismicio';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
-import { Layout } from 'components/Layout';
 import { Bounded } from 'components/Bounded';
+import { Layout } from 'components/Layout';
 
 type Props = {
   navigation: any;
   settings: any;
+}
+
+type FormProps = {
+  subject: string;
+  email: string;
+  message: string;
 }
 
 const Contact = ({ navigation, settings }: Props) => {
@@ -18,23 +26,48 @@ const Contact = ({ navigation, settings }: Props) => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm<FormProps>();
+
+  const toastifySuccess = () => {
+    toast.success('Formulaire envoyé !', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+    });
+  };
+
+  const toastifyError = () => {
+    toast.error('Il y\'a eu un problème lors de l\'envoi du formulaire', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+    });
+  };
 
   const sendMail = async (data: any) => {
-
     try {
       const response = await fetch('/api/contact', {
         'method': 'POST',
         'headers': { 'content-type': 'application/json' },
         'body': JSON.stringify(data),
       });
-      if(response.status === 200) {
+      if (response.status === 200) {
+        toastifySuccess();
         reset();
       }
     } catch (error) {
-      // toast error message. whatever you wish
+      toastifyError();
     }
-
   };
 
   return (
@@ -63,14 +96,48 @@ const Contact = ({ navigation, settings }: Props) => {
               <div>06 06 06 06 06</div>
               <div>contact@eau-bn.fr</div>
             </div>
-            <form onSubmit={handleSubmit(sendMail)} className="md:col-span-2 flex flex-col gap-4">
+            <form onSubmit={handleSubmit(sendMail)} className="md:col-span-2 flex flex-col gap-4" noValidate>
               <div className="flex gap-4">
-                <input className="w-full border py-3 px-6 focus-visible:ring-0 focus-visible:outline-0 focus:border-orange-500" id="subject" type="text" placeholder="Sujet" {...register('subject')} />
-                <input className="w-full border py-3 px-6 focus-visible:ring-0 focus-visible:outline-0 focus:border-orange-500" id="email" type="email" placeholder="Email" {...register('email')} />
+                <div className="w-full">
+                  <input
+                    className="w-full border py-3 px-6 focus-visible:ring-0 focus-visible:outline-0 focus:border-orange-500"
+                    id="subject"
+                    type="text"
+                    placeholder="Sujet"
+                    {...register('subject', {
+                      required: { value: true, message: 'Veuillez entrer le sujet de votre message' },
+                    })}
+                  />
+                  {errors.subject && <span className="text-red-600 ml-4 text-sm">{errors.subject.message}</span>}
+                </div>
+                <div className="w-full">
+                  <input
+                    className="w-full border py-3 px-6 focus-visible:ring-0 focus-visible:outline-0 focus:border-orange-500"
+                    id="email"
+                    type="email"
+                    placeholder="Email"
+                    {...register('email', {
+                      required: { value: true, message: 'Veuillez entrer une adresse email valide' },
+                      pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                    })}
+                  />
+                  {errors.email && <span className="text-red-600 ml-4 text-sm">{errors.email.message}</span>}
+                </div>
               </div>
-              <textarea className="w-full border py-3 px-6 focus-visible:ring-0 focus-visible:outline-0 focus:border-orange-500" rows={8} id="message" placeholder="Message" {...register('message')} />
+              <div className="w-full">
+                <textarea
+                  className="w-full border py-3 px-6 focus-visible:ring-0 focus-visible:outline-0 focus:border-orange-500"
+                  rows={8}
+                  id="message"
+                  placeholder="Message"
+                  {...register('message', {
+                    required: { value: true, message: 'Votre message doit contenir au moins un caractère' },
+                  })}
+                />
+                {errors.message && <span className="text-red-600 ml-4 text-sm">{errors.message.message}</span>}
+              </div>
               <button type="submit" className="p-4 bg-orange-500 hover:bg-orange-400 rounded-lg text-white">
-                Submit
+                Envoyer
               </button>
             </form>
           </div>

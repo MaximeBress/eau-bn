@@ -17,10 +17,10 @@ export {
 };
 
 export const components = {
-  hero:            Hero,
-  image:           Image,
-  image_cards:     ImageCards,
-  quote:           Quote,
-  text:            Text,
+  hero: Hero,
+  image: Image,
+  image_cards: ImageCards,
+  quote: Quote,
+  text: Text,
   text_with_image: TextWithImage,
 };

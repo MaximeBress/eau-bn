@@ -9,6 +9,7 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
+        <link rel="shortcut icon" href="/assets/favicon.ico" />
       </Head>
       <body className="overflow-x-hidden antialiased">
         <Main />
@@ -17,7 +18,7 @@ export default function Document() {
       <footer className="p-4 bg-white sm:p-6 dark:bg-gray-900">
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 EAU BN. <PrismicLink href="/mentions-legales" className="hover:underline">Mentions légales</PrismicLink></span>
+          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© {new Date().getFullYear()} EAU BN. <PrismicLink href="/mentions-legales" className="hover:underline">Mentions légales</PrismicLink></span>
           <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
             <a href={process.env.FACEBOOK_URL} target="_blank" className="text-gray-500 hover:text-gray-900 dark:hover:text-white" rel="noreferrer">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

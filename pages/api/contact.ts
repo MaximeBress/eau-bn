@@ -21,7 +21,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           },
         ],
         Subject: subject,
-        TextPart: message,
+        TextPart: `L'adresse email : ${email} vous a envoyé le message suivant :\n${message}`,
       },
     ],
   };

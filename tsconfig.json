@@ -26,7 +26,8 @@
         "next-env.d.ts",
         "**/*.ts",
         "**/*.tsx",
-        "custom.d.ts"
+        "custom.d.ts",
+        "./.slicemachine/prismicio.d.ts"
     ],
     "exclude": [
         "node_modules"
