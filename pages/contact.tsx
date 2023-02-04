@@ -83,14 +83,15 @@ const Contact = ({ navigation, settings }: Props) => {
             </Head>
 
             <Bounded>
-                <section className="bg-gray-100 p-16 md:p-24 rounded-lg icon-mail relative">
+                <section className="bg-gray-100 p-8 md:p-24 rounded-lg icon-mail relative">
                     <div className="flex flex-col gap-y-3 md:gap-y-6 md:max-w-[65%]">
-                        <h2 className="text-lg md:text-xl text-orange-500 font-bold">Contactez Nous</h2>
-                        <h1 className="text-2xl md:text-5xl text-blue-500 font-bold">Vous avez un projet en tête ?</h1>
+                        <h2 className="text-lg m-0 md:text-xl text-orange-500 font-bold">Contactez Nous</h2>
+                        <h1 className="text-2xl m-0 md:text-5xl text-blue-500 font-bold">Vous avez un projet en tête
+                            ?</h1>
                         <p>Envoyez nous un message et nous nous occuperons de vous recontacter dans les plus brefs
                             délais</p>
                     </div>
-                    <div className="flex flex-col md:grid md:grid-cols-3 gap-6 mt-10">
+                    <div className="flex flex-col md:grid md:grid-cols-3 gap-6 mt-4 md:mt-10">
                         <div className="flex flex-col gap-2">
                             <div className="font-bold text-lg">Eau B.N Piscines</div>
                             <div>1595 route de berre</div>
@@ -100,7 +101,7 @@ const Contact = ({ navigation, settings }: Props) => {
                         </div>
                         <form onSubmit={handleSubmit(sendMail)} className="md:col-span-2 flex flex-col gap-4"
                               noValidate>
-                            <div className="flex gap-4">
+                            <div className="flex md:flex-row flex-col gap-4">
                                 <div className="w-full">
                                     <input
                                         className="w-full border py-3 px-6 focus-visible:ring-0 focus-visible:outline-0 focus:border-orange-500"
