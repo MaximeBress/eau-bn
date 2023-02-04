@@ -22,10 +22,17 @@
                 "text": {
                   "type": "StructuredText",
                   "config": {
-                    "label": "Text",
+                    "label": "Title",
                     "placeholder": "",
                     "allowTargetBlank": true,
-                    "multi": "paragraph,heading1,strong,em"
+                    "single": "heading1,image"
+                  }
+                },
+                "color": {
+                  "type": "Color",
+                  "config": {
+                    "label": "color",
+                    "placeholder": ""
                   }
                 },
                 "buttonLink": {
@@ -60,46 +67,44 @@
         "mocks": {
           "default": {
             "variation": "default",
-            "name": "Default",
-            "slice_type": "hero",
-            "items": [],
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
             "primary": {
               "text": [
                 {
                   "type": "heading1",
-                  "text": "Repurpose enterprise paradigms",
-                  "spans": []
-                },
-                {
-                  "type": "paragraph",
-                  "text": "Reprehenderit sint enim culpa magna in anim sint.",
+                  "text": "Myself",
                   "spans": []
                 }
               ],
+              "color": "#26e09d",
               "buttonLink": {
                 "link_type": "Web",
-                "url": "https://prismic.io"
+                "url": "https://slicemachine.dev"
               },
-              "buttonText": "recontextualize 24/7 e-services",
+              "buttonText": "particles",
               "backgroundImage": {
                 "dimensions": {
                   "width": 900,
                   "height": 500
                 },
-                "alt": "Placeholder image",
+                "alt": null,
                 "copyright": null,
-                "url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8?w=900&h=500&fit=crop"
+                "url": "https://images.unsplash.com/photo-1591012911207-0dbac31f37da"
               }
-            }
+            },
+            "slice_type": "hero"
           }
         },
         "meta": {
           "fileName": "index",
-          "extension": "js"
+          "extension": "tsx"
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/Hero/default/preview.png",
+            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\Hero\\default\\preview.png",
             "width": 800,
             "height": 694
           }
@@ -197,16 +202,16 @@
         },
         "meta": {
           "fileName": "index",
-          "extension": "js"
+          "extension": "tsx"
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/Image/default/preview.png",
+            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\Image\\default\\preview.png",
             "width": 800,
             "height": 530
           },
           "banner": {
-            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/Image/banner/preview.png",
+            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\Image\\banner\\preview.png",
             "width": 800,
             "height": 363
           }
@@ -393,11 +398,11 @@
         },
         "meta": {
           "fileName": "index",
-          "extension": "js"
+          "extension": "tsx"
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/ImageCards/default/preview.png",
+            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\ImageCards\\default\\preview.png",
             "width": 800,
             "height": 1167
           }
@@ -463,11 +468,11 @@
         },
         "meta": {
           "fileName": "index",
-          "extension": "js"
+          "extension": "tsx"
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/Quote/default/preview.png",
+            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\Quote\\default\\preview.png",
             "width": 800,
             "height": 392
           }
@@ -575,16 +580,16 @@
         },
         "meta": {
           "fileName": "index",
-          "extension": "js"
+          "extension": "tsx"
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/Text/default/preview.png",
+            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\Text\\default\\preview.png",
             "width": 800,
             "height": 516
           },
           "twoColumns": {
-            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/Text/twoColumns/preview.png",
+            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\Text\\twoColumns\\preview.png",
             "width": 800,
             "height": 276
           }
@@ -739,16 +744,16 @@
         },
         "meta": {
           "fileName": "index",
-          "extension": "js"
+          "extension": "tsx"
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/TextWithImage/default/preview.png",
+            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\TextWithImage\\default\\preview.png",
             "width": 800,
             "height": 656
           },
           "withButton": {
-            "path": "/Users/maximebressange/Documents/dev/eau-bn/.slicemachine/assets/slices/TextWithImage/withButton/preview.png",
+            "path": "C:\\Users\\maxim\\OneDrive\\Documents\\dev\\eau-bn\\.slicemachine\\assets\\slices\\TextWithImage\\withButton\\preview.png",
             "width": 800,
             "height": 424
           }
