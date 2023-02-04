@@ -14,10 +14,17 @@
         "text": {
           "type": "StructuredText",
           "config": {
-            "label": "Text",
+            "label": "Title",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,heading1,strong,em"
+            "single": "heading1,image"
+          }
+        },
+        "color": {
+          "type": "Color",
+          "config": {
+            "label": "color",
+            "placeholder": ""
           }
         },
         "buttonLink": {

@@ -5,7 +5,7 @@
         "primary": {
           "text": {
             "config": {
-              "patternType": "STORY",
+              "patternType": "HEADING",
               "blocks": 1
             }
           }

@@ -226,14 +226,14 @@ interface SettingsDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SettingsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SettingsDocumentData>, "settings", Lang>;
-export type AllDocumentTypes = AchievementListDocument | AchievementDocument | NavigationDocument | PageDocument | SettingsDocument;
+export type AllDocumentTypes = AchievementDocument | NavigationDocument | PageDocument | SettingsDocument;
 /**
  * Primary content in Hero → Primary
  *
  */
 interface HeroSliceDefaultPrimary {
     /**
-     * Text field in *Hero → Primary*
+     * Title field in *Hero → Primary*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
@@ -242,6 +242,16 @@ interface HeroSliceDefaultPrimary {
      *
      */
     text: prismicT.RichTextField;
+    /**
+     * color field in *Hero → Primary*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.color
+     * - **Documentation**: https://prismic.io/docs/core-concepts/color
+     *
+     */
+    color: prismicT.ColorField;
     /**
      * Button Link field in *Hero → Primary*
      *
