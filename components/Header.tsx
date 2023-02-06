@@ -47,7 +47,8 @@ export const Header = ({ navigation, settings }: PageProps) => {
                     <li className="py-2">
                         <PrismicLink
                             href="/contact"
-                            className="text-white bg-gradient-to-br from-pink-500 to-orange-500 hover:from-pink-400 hover:to-orange-400 hover:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                            className="text-white whitespace-nowrap bg-gradient-to-br from-pink-500 to-orange-500 hover:from-pink-400 hover:to-orange-400 hover:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                        >
                             Contactez nous
                         </PrismicLink>
                     </li>
@@ -66,7 +67,7 @@ export const Header = ({ navigation, settings }: PageProps) => {
                     </li>
                 </ul>
             </nav>
-            <ul className={!active ? 'hidden' : 'md:hidden absolute text-sm right-0 z-10 w-full origin-top-right p-4 mt-2 bg-gray-50 rounded-lg border border-gray-100'}>
+            <ul className={!active ? 'hidden' : 'md:hidden absolute text-sm right-0 z-10 w-full origin-top-right p-4 bg-gray-200 rounded-b-lg border border-gray-300'}>
                 {navigation.data?.links.map((item: any) => (
                     <li key={prismicH.asText(item.label)}
                         className="py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100">
@@ -80,9 +81,12 @@ export const Header = ({ navigation, settings }: PageProps) => {
                         Nos Réalisations
                     </PrismicLink>
                 </li>
-                <li className="py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100">
-                    <PrismicLink href="/contact">
-                        Contact
+                <li className="mt-4">
+                    <PrismicLink
+                        href="/contact"
+                        className="text-white block whitespace-nowrap bg-gradient-to-br from-pink-500 to-orange-500 hover:from-pink-400 hover:to-orange-400 hover:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    >
+                        Contactez nous
                     </PrismicLink>
                 </li>
             </ul>
