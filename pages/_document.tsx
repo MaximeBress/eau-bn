@@ -16,8 +16,8 @@ export default function Document() {
             <NextScript/>
             </body>
             <footer className="shadow">
-                <div className="bg-gray-100 flex justify-center gap-8 items-center py-8">
-                    <h3 className="pb-0">Pour toutes informations</h3>
+                <div className="bg-gray-100 flex justify-center gap-8 items-center py-8 px-4">
+                    <h3 className="pb-0">Pour toute information</h3>
                     <PrismicLink
                         href="/contact"
                         className="text-white bg-gradient-to-br from-pink-500 to-orange-500 hover:from-pink-400 hover:to-orange-400 hover:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
