@@ -1,11 +1,11 @@
-import type { Content } from '@prismicio/client';
 import * as prismicH from '@prismicio/helpers';
-import { PrismicLink, PrismicRichText, SliceComponentType } from '@prismicio/react';
+import { PrismicLink, PrismicRichText } from '@prismicio/react';
 
 import { Bounded } from 'components/Bounded';
 import { Heading } from 'components/Heading';
+import { HeroSliceProps } from 'slice-types';
 
-const Hero: SliceComponentType<Content.HeroSlice> = ({ slice }) => {
+const Hero = ({ slice }: HeroSliceProps) => {
     const backgroundImage = slice.primary.backgroundImage;
 
     const style = {

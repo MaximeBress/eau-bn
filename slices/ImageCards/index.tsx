@@ -1,13 +1,14 @@
-import { Content } from '@prismicio/client';
 import * as prismicH from '@prismicio/helpers';
 import { PrismicNextImage } from '@prismicio/next';
-import { PrismicLink, PrismicRichText, PrismicText, SliceComponentType } from '@prismicio/react';
+import { PrismicLink, PrismicRichText, PrismicText } from '@prismicio/react';
+import { ReactNode } from 'react';
 
 import { Bounded } from 'components/Bounded';
 import { ConditionalWrap } from 'components/ConditionalWrap';
 import { Heading } from 'components/Heading';
+import { ImageCardsSliceProps } from 'slice-types';
 
-const ImageCards: SliceComponentType<Content.ImageCardsSlice> = ({ slice }) => {
+const ImageCards = ({ slice }: ImageCardsSliceProps) => {
   return (
     <Bounded as="section" className="bg-white">
       <div className="grid gap-12">
@@ -23,9 +24,9 @@ const ImageCards: SliceComponentType<Content.ImageCardsSlice> = ({ slice }) => {
                 <div className="bg-gray-100">
                   <ConditionalWrap
                     condition={prismicH.isFilled.link(item.buttonLink)}
-                    wrap={({ children }: any) => {
+                    wrap={({ children }: { children: ReactNode }) => {
                       return (
-                        <PrismicLink field={item.buttonLink} tabIndex={-1}>
+                        <PrismicLink field={item.buttonLink as never} tabIndex={-1}>
                           {children}
                         </PrismicLink>
                       );

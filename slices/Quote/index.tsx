@@ -1,11 +1,11 @@
-import { Content } from '@prismicio/client';
 import * as prismicH from '@prismicio/helpers';
-import { PrismicText, SliceComponentType } from '@prismicio/react';
+import { PrismicText } from '@prismicio/react';
 import clsx from 'clsx';
 
 import { Bounded } from 'components/Bounded';
+import { QuoteSliceProps } from 'slice-types';
 
-const Quote: SliceComponentType<Content.QuoteSlice> = ({ slice }) => {
+const Quote = ({ slice }: QuoteSliceProps) => {
   return (
     <Bounded as="section" className="bg-white">
       {prismicH.isFilled.richText(slice.primary.quote) && (

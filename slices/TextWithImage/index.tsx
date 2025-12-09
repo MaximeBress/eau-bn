@@ -1,11 +1,11 @@
-import { Content } from '@prismicio/client';
 import * as prismicH from '@prismicio/helpers';
-import { PrismicRichText, SliceComponentType } from '@prismicio/react';
+import { PrismicRichText } from '@prismicio/react';
 import { PrismicNextImage } from '@prismicio/next';
 
 import { Bounded } from 'components/Bounded';
+import { TextWithImageSliceProps } from 'slice-types';
 
-const TextWithImage: SliceComponentType<Content.TextWithImageSlice> = ({ slice }) => {
+const TextWithImage = ({ slice }: TextWithImageSliceProps) => {
   const image = slice.primary.image;
 
   return (

@@ -1,10 +1,10 @@
-import { Content } from '@prismicio/client';
-import { PrismicRichText, SliceComponentType } from '@prismicio/react';
+import { PrismicRichText } from '@prismicio/react';
 import clsx from 'clsx';
 
 import { Bounded } from 'components/Bounded';
+import { TextSliceProps } from 'slice-types';
 
-const Text: SliceComponentType<Content.TextSlice> = ({ slice }) => {
+const Text = ({ slice }: TextSliceProps) => {
   return (
     <Bounded as="section" className="bg-white leading-relaxed">
       <div

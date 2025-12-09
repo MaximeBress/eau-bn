@@ -27,7 +27,7 @@ export const linkResolver = (doc: any) => {
  *
  * @param config {prismicNext.CreateClientConfig} - A configuration object to
  */
-export const createClient = (config: CreateClientConfig = {}) => {
+export const createClient = (config: any = {}) => {
   const client = prismic.createClient(sm.apiEndpoint, {
     routes: [
       { type: 'page', path: '/:uid' },
@@ -38,11 +38,8 @@ export const createClient = (config: CreateClientConfig = {}) => {
     ],
   });
 
-  prismicNext.enableAutoPreviews({
-    client,
-    previewData: config.previewData,
-    req: config.req,
-  });
+  // Preview support has been moved to Next.js native preview mode in v16
+  // The enableAutoPreviews function is no longer used with the new API
 
   return client;
 };

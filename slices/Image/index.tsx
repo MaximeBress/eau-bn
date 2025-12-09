@@ -1,12 +1,11 @@
-import type { Content } from '@prismicio/client';
 import * as prismicH from '@prismicio/helpers';
 import { PrismicNextImage } from '@prismicio/next';
-import { SliceComponentType } from '@prismicio/react';
 import clsx from 'clsx';
 
 import { Bounded } from 'components/Bounded';
+import { ImageSliceProps } from 'slice-types';
 
-const Image: SliceComponentType<Content.ImageSlice> = ({ slice, index }) => {
+const Image = ({ slice, index }: ImageSliceProps) => {
   const image = slice.primary.image;
 
   return (
