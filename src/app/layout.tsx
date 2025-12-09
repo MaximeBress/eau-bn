@@ -1,12 +1,14 @@
-import { PrismicPreview } from "@prismicio/next";
-import type { Metadata } from "next";
-import { Quicksand } from "next/font/google";
+import {GoogleTagManager} from "@next/third-parties/google";
+import {PrismicPreview} from "@prismicio/next";
+import type {Metadata} from "next";
+import {Quicksand} from "next/font/google";
+import {ReactNode} from "react";
+import {ToastContainer} from "react-toastify";
 
 import "./globals.css";
-import { createClient, repositoryName } from "@/prismicio";
-import { Header } from "@/components/Header";
-import { ToastContainer } from "react-toastify";
-import { Footer } from "@/components/Footer";
+import {createClient, repositoryName} from "@/prismicio";
+import {Header} from "@/components/Header";
+import {Footer} from "@/components/Footer";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -22,13 +24,14 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   const client = createClient();
   const navigation = await client.getSingle("navigation");
 
   return (
     <html lang="fr">
+      <GoogleTagManager gtmId={process.env.GTAG_ID ?? ""} />
       <body className={`${quicksand.className} text-slate-800`}>
         <Header navigation={navigation} />
         <main>{children}</main>
