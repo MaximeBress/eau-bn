@@ -1,14 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm view:*)",
-      "Bash(npm install)",
-      "Bash(npm run build:*)",
-      "Bash(npm install:*)",
-      "Bash(tee:*)",
-      "Bash(echo:*)",
-      "Bash(find:*)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm run slicemachine:*)",
+      "Bash(timeout 10 npm run slicemachine:*)",
+      "Bash(npm ls:*)"
     ]
   }
 }

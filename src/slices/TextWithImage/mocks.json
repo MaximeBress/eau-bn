@@ -1,0 +1,105 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "text": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Pariatur ad laboris occaecat nostrud dolore voluptate non sint sint id magna sunt aute. Consequat duis reprehenderit laborum pariatur deserunt quis ad Lorem ullamco in."
+            }
+          }
+        ]
+      },
+      "image": {
+        "__TYPE__": "ImageContent",
+        "origin": {
+          "id": "main",
+          "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a",
+          "width": 3024,
+          "height": 3778
+        },
+        "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a?rect=0%2C75%2C3024%2C3629&w=1000&h=1200",
+        "width": 1000,
+        "height": 1200,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 75
+          },
+          "background": "transparent"
+        },
+        "alt": "family",
+        "thumbnails": {}
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "withButton",
+    "primary": {
+      "text": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Est qui incididunt voluptate dolore minim proident ipsum. Incididunt consequat qui veniam Lorem anim occaecat."
+            }
+          }
+        ]
+      },
+      "buttonLink": {
+        "__TYPE__": "LinkContent",
+        "key": "69146a7c-b569-49ec-88f6-5c648266cd53",
+        "value": {
+          "__TYPE__": "ExternalLink",
+          "url": "http://twitter.com"
+        }
+      },
+      "buttonText": {
+        "__TYPE__": "FieldContent",
+        "value": "rush",
+        "type": "Text"
+      },
+      "image": {
+        "__TYPE__": "ImageContent",
+        "origin": {
+          "id": "main",
+          "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869",
+          "width": 3199,
+          "height": 3199
+        },
+        "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869",
+        "width": 3199,
+        "height": 3199,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 0
+          },
+          "background": "transparent"
+        },
+        "alt": "wooden",
+        "thumbnails": {}
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  }
+]
