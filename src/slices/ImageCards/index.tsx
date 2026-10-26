@@ -24,47 +24,49 @@ const ImageCards: FC<ImageProps> = ({ slice }) => {
           </Heading>
         )}
         <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {slice.items.map((item: any) => (
-            <li className="grid gap-8">
-              {isFilled.image(item.image) && (
-                <div className="bg-gray-100 relative w-full aspect-[4/3]">
-                  <ConditionalWrap
-                    condition={isFilled.link(item.buttonLink)}
-                    wrap={({ children }: { children: ReactNode }) => {
-                      return (
-                        <PrismicLink
-                          field={item.buttonLink as never}
-                          tabIndex={-1}
-                        >
-                          {children}
-                        </PrismicLink>
-                      );
-                    }}
-                  >
-                    <PrismicNextImage
-                      field={item.image}
-                      fill
-                      className="object-cover"
-                      fallbackAlt=""
-                    />
-                  </ConditionalWrap>
+          {slice.items.map(
+            (item: Content.ImageCardsSliceDefaultItem, index: number) => (
+              <li key={index} className="grid gap-8">
+                {isFilled.image(item.image) && (
+                  <div className="relative aspect-[4/3] w-full bg-gray-100">
+                    <ConditionalWrap
+                      condition={isFilled.link(item.buttonLink)}
+                      wrap={({ children }: { children: ReactNode }) => {
+                        return (
+                          <PrismicLink
+                            field={item.buttonLink as never}
+                            tabIndex={-1}
+                          >
+                            {children}
+                          </PrismicLink>
+                        );
+                      }}
+                    >
+                      <PrismicNextImage
+                        field={item.image}
+                        fill
+                        className="object-cover"
+                        fallbackAlt=""
+                      />
+                    </ConditionalWrap>
+                  </div>
+                )}
+                <div className="leading-relaxed">
+                  <PrismicRichText field={item.text} />
                 </div>
-              )}
-              <div className="leading-relaxed">
-                <PrismicRichText field={item.text} />
-              </div>
-              {isFilled.link(item.buttonLink) && (
-                <div>
-                  <PrismicLink
-                    field={item.buttonLink}
-                    className="font-semibold"
-                  >
-                    {item.buttonText || "More Info"}
-                  </PrismicLink>
-                </div>
-              )}
-            </li>
-          ))}
+                {isFilled.link(item.buttonLink) && (
+                  <div>
+                    <PrismicLink
+                      field={item.buttonLink}
+                      className="font-semibold"
+                    >
+                      {item.buttonText || "More Info"}
+                    </PrismicLink>
+                  </div>
+                )}
+              </li>
+            ),
+          )}
         </ul>
       </div>
     </Bounded>

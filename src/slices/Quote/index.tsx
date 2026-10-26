@@ -15,15 +15,15 @@ const Quote: FC<QuoteProps> = ({ slice }) => {
           <blockquote>
             <p
               className={clsx(
-                "text-4xl font-medium leading-tight md:text-5xl md:leading-tight",
+                "text-4xl leading-tight font-medium md:text-5xl md:leading-tight",
                 !isFilled.keyText(slice.primary.source) && "text-center",
               )}
             >
-              <span className="-ml-3.5 select-none text-slate-400 md:-ml-5">
+              <span className="-ml-3.5 text-slate-400 select-none md:-ml-5">
                 &ldquo;
               </span>
               <PrismicText field={slice.primary.quote} />
-              <span className="select-none text-slate-400">&rdquo;</span>
+              <span className="text-slate-400 select-none">&rdquo;</span>
             </p>
           </blockquote>
           {isFilled.keyText(slice.primary.source) && (

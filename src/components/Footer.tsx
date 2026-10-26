@@ -2,16 +2,16 @@ import { PrismicLink } from "@prismicio/react";
 
 export const Footer = () => (
   <footer className="shadow">
-    <div className="bg-gray-100 flex justify-center gap-8 items-center py-8 px-4">
+    <div className="flex items-center justify-center gap-8 bg-gray-100 px-4 py-8">
       <h3 className="pb-0">Pour toute information</h3>
       <PrismicLink
-        href="/src/app/contact"
-        className="text-white bg-linear-to-br from-pink-500 to-orange-500 hover:from-pink-400 hover:to-orange-400 hover:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        href="/contact"
+        className="rounded-lg bg-linear-to-br from-pink-500 to-orange-500 px-5 py-2.5 text-center text-sm font-medium text-white hover:from-pink-400 hover:to-orange-400 hover:text-white focus:ring-4 focus:ring-pink-200 focus:outline-none"
       >
         Contactez nous
       </PrismicLink>
     </div>
-    <div className="p-4 sm:p-6 bg-blue-800 text-white flex items-center justify-between">
+    <div className="flex items-center justify-between bg-blue-800 p-4 text-white sm:p-6">
       <div className="flex gap-4">
         <span>© {new Date().getFullYear()} EAU BN.</span>
         <PrismicLink
@@ -21,7 +21,7 @@ export const Footer = () => (
           Mentions légales
         </PrismicLink>
       </div>
-      <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+      <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
         <a
           href={process.env.FACEBOOK_URL}
           target="_blank"
@@ -29,7 +29,7 @@ export const Footer = () => (
           rel="noreferrer"
         >
           <svg
-            className="w-5 h-5"
+            className="h-5 w-5"
             fill="currentColor"
             viewBox="0 0 24 24"
             aria-hidden="true"

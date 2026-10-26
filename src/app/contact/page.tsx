@@ -15,7 +15,7 @@ export default function Contact() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     reset,
   } = useForm<FormProps>();
 
@@ -45,30 +45,32 @@ export default function Contact() {
     });
   };
 
-  const sendMail = async (data: any) => {
+  const sendMail = async (data: FormProps) => {
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(data),
       });
-      if (response.status === 200) {
+      if (response.ok) {
         toastifySuccess();
         reset();
+      } else {
+        toastifyError();
       }
-    } catch (error) {
+    } catch {
       toastifyError();
     }
   };
 
   return (
     <Bounded>
-      <section className="bg-gray-100 p-16 md:p-24 rounded-lg icon-mail relative">
-        <div className="flex flex-col gap-y-3 md:gap-y-6 md:max-w-[65%]">
-          <h2 className="text-lg md:text-xl text-orange-500 font-bold">
+      <section className="icon-mail relative rounded-lg bg-gray-100 p-16 md:p-24">
+        <div className="flex flex-col gap-y-3 md:max-w-[65%] md:gap-y-6">
+          <h2 className="text-lg font-bold text-orange-500 md:text-xl">
             Contactez Nous
           </h2>
-          <h1 className="text-2xl md:text-5xl text-blue-500 font-bold">
+          <h1 className="text-2xl font-bold text-blue-500 md:text-5xl">
             Vous avez un projet en tête ?
           </h1>
           <p>
@@ -76,9 +78,9 @@ export default function Contact() {
             dans les plus brefs délais
           </p>
         </div>
-        <div className="flex flex-col md:grid md:grid-cols-3 gap-6 mt-10">
+        <div className="mt-10 flex flex-col gap-6 md:grid md:grid-cols-3">
           <div className="flex flex-col gap-2">
-            <div className="font-bold text-lg">Eau B.N Piscines</div>
+            <div className="text-lg font-bold">Eau B.N Piscines</div>
             <div>1595 route de berre</div>
             <div>13510 Eguilles</div>
             <div>06 21 05 50 84</div>
@@ -86,13 +88,13 @@ export default function Contact() {
           </div>
           <form
             onSubmit={handleSubmit(sendMail)}
-            className="md:col-span-2 flex flex-col gap-4"
+            className="flex flex-col gap-4 md:col-span-2"
             noValidate
           >
             <div className="flex gap-4">
               <div className="w-full">
                 <input
-                  className="w-full border py-3 px-6 focus-visible:ring-0 focus-visible:outline-0 focus:border-orange-500"
+                  className="w-full border px-6 py-3 focus:border-orange-500 focus-visible:ring-0 focus-visible:outline-0"
                   id="subject"
                   type="text"
                   placeholder="Sujet"
@@ -104,14 +106,14 @@ export default function Contact() {
                   })}
                 />
                 {errors.subject && (
-                  <span className="text-red-600 ml-4 text-sm">
+                  <span className="ml-4 text-sm text-red-600">
                     {errors.subject.message}
                   </span>
                 )}
               </div>
               <div className="w-full">
                 <input
-                  className="w-full border py-3 px-6 focus-visible:ring-0 focus-visible:outline-0 focus:border-orange-500"
+                  className="w-full border px-6 py-3 focus:border-orange-500 focus-visible:ring-0 focus-visible:outline-0"
                   id="email"
                   type="email"
                   placeholder="Email"
@@ -125,7 +127,7 @@ export default function Contact() {
                   })}
                 />
                 {errors.email && (
-                  <span className="text-red-600 ml-4 text-sm">
+                  <span className="ml-4 text-sm text-red-600">
                     {errors.email.message}
                   </span>
                 )}
@@ -133,7 +135,7 @@ export default function Contact() {
             </div>
             <div className="w-full">
               <textarea
-                className="w-full border py-3 px-6 focus-visible:ring-0 focus-visible:outline-0 focus:border-orange-500"
+                className="w-full border px-6 py-3 focus:border-orange-500 focus-visible:ring-0 focus-visible:outline-0"
                 rows={8}
                 id="message"
                 placeholder="Message"
@@ -146,14 +148,15 @@ export default function Contact() {
                 })}
               />
               {errors.message && (
-                <span className="text-red-600 ml-4 text-sm">
+                <span className="ml-4 text-sm text-red-600">
                   {errors.message.message}
                 </span>
               )}
             </div>
             <button
               type="submit"
-              className="p-4 bg-gradient-to-br from-pink-500 to-orange-500 hover:from-pink-400 hover:to-orange-400 hover:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 rounded-lg text-white"
+              disabled={isSubmitting}
+              className="rounded-lg bg-gradient-to-br from-pink-500 to-orange-500 p-4 text-white hover:from-pink-400 hover:to-orange-400 hover:text-white focus:ring-4 focus:ring-pink-200 focus:outline-none"
             >
               Envoyer
             </button>

@@ -15,14 +15,14 @@ export default async function Achievements() {
 
   return (
     <Bounded>
-      <div className="text-center max-w-lg flex flex-col gap-5 mx-auto mb-14">
-        <h1 className="text-6xl text-blue-500 font-bold">Nos Réalisations</h1>
+      <div className="mx-auto mb-14 flex max-w-lg flex-col gap-5 text-center">
+        <h1 className="text-6xl font-bold text-blue-500">Nos Réalisations</h1>
       </div>
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {achievements.length > 0 &&
           achievements.map((achievement, index: number) => (
             <PrismicLink href={achievement.url as string} key={index}>
-              <figure className="relative max-w-sm transition-all duration-300 cursor-pointer filter grayscale-0 hover:grayscale">
+              <figure className="relative max-w-sm cursor-pointer grayscale-0 filter transition-all duration-300 hover:grayscale">
                 <Image
                   className="rounded-lg"
                   src={achievement.data.image.url || ""}
