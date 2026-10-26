@@ -1,63 +1,80 @@
 @import "tailwindcss";
 
 @theme {
-    --color-blue-50: #F4F6F8;
-    --color-blue-100: #E9EDF1;
-    --color-blue-200: #C8D1DC;
-    --color-blue-300: #A7B5C7;
-    --color-blue-400: #647E9D;
-    --color-blue-500: #224773;
-    --color-blue-600: #1F4068;
-    --color-blue-700: #1A3556;
-    --color-blue-800: #142B45;
-    --color-blue-900: #112338;
+  --color-ivoire: #f7f4ee;
+  --color-sable: #e5d8c5;
+  --color-sable-clair: #efe7da;
+  --color-petrole: #184b56;
+  --color-petrole-fonce: #113840;
+  --color-anthracite: #293536;
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
 }
 
-[data-collapsible="true"].bg-white + [data-collapsible="true"].bg-white {
-    @apply pt-0 md:pt-0;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ivoire font-sans text-anthracite antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-serif font-medium tracking-tight text-balance;
+  }
+
+  ::selection {
+    @apply bg-sable text-anthracite;
+  }
 }
 
-html,
-body {
-    padding: 0;
-    margin: 0;
-}
-
-.icon-mail:before {
-    content: "";
-    position: absolute;
-    top: 30px;
-    right: 50px;
-    height: 165px;
-    width: 165px;
-    z-index: 1;
-    background: url('/assets/img/mail.png') no-repeat;
-}
-
-.toast-message-container {
-    top: 0;
-    bottom: unset;
-    right: 60px;
-}
-
-@media screen and (max-width: 767px) {
-    .icon-mail:before {
-        display: none;
+/* Light reveal on scroll, only where scroll-driven animations are supported. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
     }
+  }
 }
 
-h1 {
-    @apply text-6xl mb-12;
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-h2 {
-    @apply text-4xl my-3;
+/* Rich text coming from Prismic (réalisations). */
+.prose-eau {
+  @apply leading-relaxed;
 }
-
-h3 {
-    @apply text-2xl;
+.prose-eau h1,
+.prose-eau h2 {
+  @apply mb-4 text-3xl text-petrole md:text-4xl;
 }
-
-p {
-    @apply pb-2;
+.prose-eau h3,
+.prose-eau h4 {
+  @apply mb-3 text-2xl text-petrole;
+}
+.prose-eau p {
+  @apply mb-4;
+}
+.prose-eau ul {
+  @apply mb-4 list-disc pl-6;
+}
+.prose-eau ol {
+  @apply mb-4 list-decimal pl-6;
+}
+.prose-eau a {
+  @apply text-petrole underline underline-offset-4;
 }

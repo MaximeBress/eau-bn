@@ -1,42 +1,56 @@
-import { createClient } from "@/prismicio";
-import { PrismicLink } from "@prismicio/react";
 import { Metadata } from "next";
-import Image from "next/image";
-import { Bounded } from "@/components/Bounded";
+
+import { AchievementCard } from "@/components/AchievementCard";
+import { ContactCta } from "@/components/sections";
+import { Container, Eyebrow, Section } from "@/components/ui";
+import { getAchievements } from "@/lib/achievements";
 
 export const metadata: Metadata = {
   title: "Nos réalisations",
-  description: "Voici la liste des réalisations Eau BN",
+  description:
+    "Découvrez les chantiers réalisés par Eau BN Piscines : étanchéité PVC armé, rénovation et conversion de bassins.",
 };
 
-export default async function Achievements() {
-  const client = createClient();
-  const achievements = await client.getAllByType("achievement");
+export default async function AchievementsPage() {
+  const achievements = await getAchievements();
 
   return (
-    <Bounded>
-      <div className="mx-auto mb-14 flex max-w-lg flex-col gap-5 text-center">
-        <h1 className="text-6xl font-bold text-blue-500">Nos Réalisations</h1>
-      </div>
-      <section className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {achievements.length > 0 &&
-          achievements.map((achievement, index: number) => (
-            <PrismicLink href={achievement.url as string} key={index}>
-              <figure className="relative max-w-sm cursor-pointer grayscale-0 filter transition-all duration-300 hover:grayscale">
-                <Image
-                  className="rounded-lg"
-                  src={achievement.data.image.url || ""}
-                  alt={achievement.data.title || "Réalisation"}
-                  width={achievement.data.image.dimensions?.width || 800}
-                  height={achievement.data.image.dimensions?.height || 600}
-                />
-                <p className="absolute bottom-6 px-4 text-lg text-white">
-                  {achievement.data.title}
-                </p>
-              </figure>
-            </PrismicLink>
-          ))}
+    <>
+      <section className="bg-ivoire pt-14 pb-4 md:pt-24">
+        <Container>
+          <Eyebrow>Réalisations</Eyebrow>
+          <h1 className="max-w-3xl text-5xl leading-[1.05] md:text-7xl">
+            Nos chantiers
+          </h1>
+          <span
+            aria-hidden="true"
+            className="mt-6 block h-px w-14 bg-petrole"
+          />
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed">
+            Rénovations, conversions de bassins carrelés et nouvelles
+            étanchéités : découvrez quelques-unes de nos réalisations, de la
+            préparation du support jusqu’aux finitions.
+          </p>
+        </Container>
       </section>
-    </Bounded>
+
+      <Section>
+        <Container>
+          {achievements.length > 0 ? (
+            <ul className="grid gap-x-10 gap-y-16 md:grid-cols-2">
+              {achievements.map((achievement) => (
+                <li key={achievement.uid} className="reveal">
+                  <AchievementCard achievement={achievement} />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>Nos réalisations arrivent bientôt.</p>
+          )}
+        </Container>
+      </Section>
+
+      <ContactCta title="Un projet similaire ? Parlons-en." />
+    </>
   );
 }

@@ -1,4 +1,5 @@
 import { Content, isFilled } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
 import {
   PrismicLink,
   PrismicRichText,
@@ -6,38 +7,38 @@ import {
 } from "@prismicio/react";
 import { FC } from "react";
 
-import { Bounded } from "@/components/Bounded";
+import { buttonClassName } from "@/components/ui";
 
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
 const Hero: FC<HeroProps> = ({ slice }) => {
   const backgroundImage = slice.primary.backgroundImage;
 
-  const style = {
-    backgroundPosition: "50%",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundImage: `url(${backgroundImage.url})`,
-    height: "500px",
-  };
-
   return (
-    <section className="relative overflow-hidden" style={style}>
-      <Bounded yPadding="lg" className="relative">
-        <div className="grid justify-items-center gap-8">
-          <div className="max-w-2xl text-center text-white">
-            <PrismicRichText field={slice.primary.text} />
-          </div>
-          {isFilled.link(slice.primary.buttonLink) && (
-            <PrismicLink
-              field={slice.primary.buttonLink}
-              className="rounded bg-white px-5 py-3 font-medium text-slate-800"
-            >
-              {slice.primary.buttonText || "Learn More"}
-            </PrismicLink>
-          )}
+    <section className="relative isolate my-6 overflow-hidden">
+      {isFilled.image(backgroundImage) && (
+        <PrismicNextImage
+          field={backgroundImage}
+          fill
+          sizes="100vw"
+          className="-z-20 object-cover"
+          fallbackAlt=""
+        />
+      )}
+      <div className="absolute inset-0 -z-10 bg-anthracite/45" />
+      <div className="mx-auto grid max-w-3xl justify-items-center gap-8 px-5 py-24 text-center text-white md:py-32">
+        <div className="prose-eau text-lg [&_h1]:text-white [&_h2]:text-white">
+          <PrismicRichText field={slice.primary.text} />
         </div>
-      </Bounded>
+        {isFilled.link(slice.primary.buttonLink) && (
+          <PrismicLink
+            field={slice.primary.buttonLink}
+            className={buttonClassName("light")}
+          >
+            {slice.primary.buttonText || "En savoir plus"}
+          </PrismicLink>
+        )}
+      </div>
     </section>
   );
 };

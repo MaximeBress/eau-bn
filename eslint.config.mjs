@@ -21,6 +21,7 @@ const eslintConfig = defineConfig([
           endOfLine: "auto",
           arrowParens: "always",
           plugins: ["prettier-plugin-tailwindcss"],
+          tailwindStylesheet: "./src/app/globals.css",
         },
         {
           usePrettierrc: false,

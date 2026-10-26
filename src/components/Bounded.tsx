@@ -3,31 +3,15 @@ import { ElementType, ReactNode } from "react";
 
 type Props = {
   as?: ElementType;
-  yPadding?: "sm" | "base" | "lg";
-  collapsible?: boolean;
   className?: string;
   children: ReactNode;
 };
 
-export const Bounded = ({
-  as: Comp = "div",
-  yPadding = "base",
-  collapsible = true,
-  className,
-  children,
-}: Props) => {
+// Wrapper used by Prismic slices (réalisations).
+export const Bounded = ({ as: Comp = "div", className, children }: Props) => {
   return (
-    <Comp
-      data-collapsible={collapsible}
-      className={clsx(
-        "px-6",
-        yPadding === "sm" && "py-8 md:py-10",
-        yPadding === "base" && "py-20 md:py-28",
-        yPadding === "lg" && "py-32 md:py-48",
-        className,
-      )}
-    >
-      <div className="mx-auto w-full max-w-6xl">{children}</div>
+    <Comp className={clsx("py-4 md:py-6", className)}>
+      <div className="mx-auto w-full max-w-6xl px-5 md:px-8">{children}</div>
     </Comp>
   );
 };

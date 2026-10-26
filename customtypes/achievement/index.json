@@ -33,6 +33,20 @@
           "placeholder": ""
         }
       },
+      "intervention": {
+        "type": "Text",
+        "config": {
+          "label": "Type d'intervention",
+          "placeholder": "Rénovation, conversion d'un bassin carrelé…"
+        }
+      },
+      "finition": {
+        "type": "Text",
+        "config": {
+          "label": "Finition",
+          "placeholder": "RENOLIT ALKORPLAN 3D Sable…"
+        }
+      },
       "image": {
         "type": "Image",
         "config": {

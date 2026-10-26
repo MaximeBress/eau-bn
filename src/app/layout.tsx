@@ -1,42 +1,48 @@
 import { GoogleTagManager } from "@next/third-parties/google";
 import { PrismicPreview } from "@prismicio/next";
 import type { Metadata } from "next";
-import { Quicksand } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import { ReactNode } from "react";
 import { ToastContainer } from "react-toastify";
 
 import "./globals.css";
-import { createClient, repositoryName } from "@/prismicio";
-import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { site } from "@/config/site";
+import { repositoryName } from "@/prismicio";
 
-const quicksand = Quicksand({
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+  variable: "--font-cormorant",
+});
+
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-quicksand",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-  title: "Eau BN",
-  description: "",
+  title: {
+    default: `${site.name} — Étanchéité PVC armé et rénovation de piscines`,
+    template: `%s | ${site.name}`,
+  },
+  description:
+    "Eau BN Piscines : étanchéité PVC armé, hydraulique et traitement de l’eau, construction et rénovation de piscines. Un interlocuteur unique du premier rendez-vous à la mise en eau.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const client = createClient();
-  const navigation = await client.getSingle("navigation");
-
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${cormorant.variable} ${inter.variable}`}>
       <GoogleTagManager gtmId={process.env.GTAG_ID ?? ""} />
-      <body className={`${quicksand.className} text-slate-800`}>
-        <Header
-          navigation={navigation}
-          facebookUrl={process.env.FACEBOOK_URL}
-        />
+      <body>
+        <Header instagramUrl={site.instagramUrl} />
         <main>{children}</main>
         <Footer />
         <ToastContainer
