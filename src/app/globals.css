@@ -102,3 +102,13 @@
 .gallery .swiper-thumbs .swiper-slide-thumb-active > div {
   @apply ring-2 ring-petrole;
 }
+
+/* Lightbox colors (yet-another-react-lightbox). */
+.gallery-lightbox {
+  --yarl__color_backdrop: var(--color-petrole-fonce);
+  --yarl__container_background_color: var(--color-petrole-fonce);
+  --yarl__thumbnails_container_background_color: var(--color-petrole-fonce);
+  --yarl__thumbnails_thumbnail_background: transparent;
+  --yarl__thumbnails_thumbnail_border_color: transparent;
+  --yarl__thumbnails_thumbnail_active_border_color: var(--color-ivoire);
+}

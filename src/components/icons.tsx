@@ -126,3 +126,18 @@ export const PinIcon = ({ className }: IconProps) => (
     <circle cx="12" cy="9.5" r="2.5" />
   </svg>
 );
+
+export const ExpandIcon = ({ className }: IconProps) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.6}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M15 4h5v5M9 20H4v-5M20 4l-6 6M4 20l6-6" />
+  </svg>
+);
