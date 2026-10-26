@@ -41,9 +41,9 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${cormorant.variable} ${inter.variable}`}>
       <GoogleTagManager gtmId={process.env.GTAG_ID ?? ""} />
-      <body>
+      <body className="flex min-h-svh flex-col">
         <Header instagramUrl={site.instagramUrl} />
-        <main>{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
         <ToastContainer
           position="top-right"

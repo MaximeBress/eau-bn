@@ -1,19 +1,53 @@
-import { isFilled } from "@prismicio/client";
-import { PrismicNextImage } from "@prismicio/next";
-import { SliceZone } from "@prismicio/react";
+import { Content, isFilled, RichTextField } from "@prismicio/client";
+import {
+  PrismicRichText,
+  SliceComponentProps,
+  SliceZone,
+} from "@prismicio/react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { AchievementCard, AchievementTags } from "@/components/AchievementCard";
+import { AchievementGallery } from "@/components/AchievementGallery";
+import { Bounded } from "@/components/Bounded";
 import { ArrowRightIcon } from "@/components/icons";
 import { ContactCta } from "@/components/sections";
 import { Container, Section, SectionTitle } from "@/components/ui";
-import { getAchievements, toSummary } from "@/lib/achievements";
+import {
+  getAchievements,
+  getGalleryImages,
+  toSummary,
+} from "@/lib/achievements";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
 type Params = { uid: string };
+
+// Photos are shown in the gallery: slices only contribute their text here.
+const SliceText = ({
+  slice,
+}: SliceComponentProps<
+  Content.TextWithImageSlice | Content.HeroSlice | Content.ImageSlice
+>) => {
+  const text = (slice.primary as { text?: RichTextField }).text;
+  if (!text || !isFilled.richText(text)) return null;
+
+  return (
+    <Bounded as="section">
+      <div className="prose-eau max-w-3xl text-lg">
+        <PrismicRichText field={text} />
+      </div>
+    </Bounded>
+  );
+};
+
+const detailComponents = {
+  ...components,
+  hero: SliceText,
+  image: SliceText,
+  text_with_image: SliceText,
+};
 
 const getAchievement = async (uid: string) => {
   const client = createClient();
@@ -57,7 +91,7 @@ export default async function AchievementPage({
 
   return (
     <>
-      <section className="bg-ivoire pt-10 md:pt-16">
+      <section className="bg-ivoire pt-10 pb-6 md:pt-16 md:pb-10">
         <Container>
           <Link
             href="/realisations"
@@ -75,22 +109,19 @@ export default async function AchievementPage({
             </p>
           ))}
           <AchievementTags achievement={summary} className="mt-5" />
-          {isFilled.image(achievement.data.image) && (
-            <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-lg md:aspect-[16/9]">
-              <PrismicNextImage
-                field={achievement.data.image}
-                fill
-                priority
-                sizes="(min-width: 1152px) 1152px, 100vw"
-                fallbackAlt=""
-                className="object-cover"
-              />
-            </div>
-          )}
+          <div className="mt-10">
+            <AchievementGallery
+              images={getGalleryImages(achievement)}
+              title={summary.title}
+            />
+          </div>
         </Container>
       </section>
 
-      <SliceZone slices={achievement.data.slices} components={components} />
+      <SliceZone
+        slices={achievement.data.slices}
+        components={detailComponents}
+      />
 
       {others.length > 0 && (
         <Section tone="sable">

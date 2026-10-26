@@ -78,3 +78,27 @@
 .prose-eau a {
   @apply text-petrole underline underline-offset-4;
 }
+
+/* Réalisations gallery (Swiper). */
+.gallery {
+  --swiper-navigation-color: var(--color-petrole);
+  --swiper-navigation-size: 18px;
+  --swiper-navigation-sides-offset: 16px;
+}
+.gallery .swiper-button-prev,
+.gallery .swiper-button-next {
+  @apply size-11 rounded-full bg-ivoire/90 shadow-sm transition-colors hover:bg-white;
+}
+.gallery .swiper-button-prev svg,
+.gallery .swiper-button-next svg {
+  @apply size-4;
+}
+.gallery .swiper-thumbs .swiper-slide {
+  @apply opacity-50 transition-opacity hover:opacity-80;
+}
+.gallery .swiper-thumbs .swiper-slide-thumb-active {
+  @apply opacity-100;
+}
+.gallery .swiper-thumbs .swiper-slide-thumb-active > div {
+  @apply ring-2 ring-petrole;
+}

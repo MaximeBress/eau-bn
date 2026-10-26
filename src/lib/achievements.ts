@@ -1,4 +1,4 @@
-import { Content } from "@prismicio/client";
+import { Content, ImageField, isFilled } from "@prismicio/client";
 
 import { createClient } from "@/prismicio";
 
@@ -49,4 +49,30 @@ export const getAchievements = async () => {
   });
 
   return achievements.map(toSummary);
+};
+
+// All photos of a réalisation: main image first, then images found in slices.
+export const getGalleryImages = (
+  achievement: Content.AchievementDocument,
+): ImageField[] => {
+  const images: ImageField[] = [];
+  const seen = new Set<string>();
+  const add = (image: ImageField | undefined) => {
+    if (!image || !isFilled.image(image)) return;
+    const key = image.url.split("?")[0];
+    if (seen.has(key)) return;
+    seen.add(key);
+    images.push(image);
+  };
+
+  add(achievement.data.image);
+  for (const slice of achievement.data.slices) {
+    const primary = slice.primary as Record<string, unknown>;
+    add((primary.image ?? primary.backgroundImage) as ImageField | undefined);
+    for (const item of (slice.items ?? []) as Record<string, unknown>[]) {
+      add(item.image as ImageField | undefined);
+    }
+  }
+
+  return images;
 };
