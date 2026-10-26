@@ -15,7 +15,10 @@ export async function generateMetadata({
   const achievement = await client.getByUID("achievement", uid);
 
   return {
-    title: achievement.data.meta_title || achievement.data.title || "Réalisation Eau BN",
+    title:
+      achievement.data.meta_title ||
+      achievement.data.title ||
+      "Réalisation Eau BN",
     description: achievement.data.meta_description || undefined,
   };
 }

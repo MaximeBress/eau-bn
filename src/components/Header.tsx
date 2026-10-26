@@ -3,17 +3,23 @@
 import { PrismicLink, PrismicText } from "@prismicio/react";
 import Image from "next/image";
 import { useState } from "react";
-import { PrismicDocument } from "@prismicio/client";
+import { Content, PrismicDocument } from "@prismicio/client";
 
-export const Header = ({ navigation }: { navigation: PrismicDocument }) => {
+export const Header = ({
+  navigation,
+  facebookUrl,
+}: {
+  navigation: PrismicDocument;
+  facebookUrl?: string;
+}) => {
   const [active, setActive] = useState(false);
 
   return (
-    <div className="relative shadow sticky top-0 z-30 bg-white">
-      <nav className="md:container px-2 sm:px-4 py-2.5 flex items-center justify-between md:mx-auto">
+    <div className="relative sticky top-0 z-30 bg-white shadow">
+      <nav className="flex items-center justify-between px-2 py-2.5 sm:px-4 md:container md:mx-auto">
         <PrismicLink
           href="/"
-          className="flex items-center relative w-16 h-16 overflow-hidden"
+          className="relative flex h-16 w-16 items-center overflow-hidden"
         >
           <Image
             src="/assets/img/logo.png"
@@ -25,13 +31,13 @@ export const Header = ({ navigation }: { navigation: PrismicDocument }) => {
         <button
           onClick={() => setActive(!active)}
           type="button"
-          className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          className="ml-3 inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 focus:outline-none md:hidden"
           aria-controls="navbar-default"
           aria-expanded="false"
         >
           <span className="sr-only">Ouvrir le menu</span>
           <svg
-            className="w-6 h-6"
+            className="h-6 w-6"
             aria-hidden="true"
             fill="currentColor"
             viewBox="0 0 20 20"
@@ -45,35 +51,37 @@ export const Header = ({ navigation }: { navigation: PrismicDocument }) => {
           </svg>
         </button>
 
-        <ul className="hidden items-center text-blue-500 font-semibold text-center md:flex space-x-6 ml-4">
-          {navigation.data?.links.map((item: any) => (
-            <li key={item.label} className="py-2 hover:text-orange-500">
-              <PrismicLink field={item.link}>
-                <PrismicText field={item.label} />
-              </PrismicLink>
-            </li>
-          ))}
+        <ul className="ml-4 hidden items-center space-x-6 text-center font-semibold text-blue-500 md:flex">
+          {navigation.data?.links.map(
+            (item: Content.NavigationDocumentDataLinksItem) => (
+              <li key={item.label} className="py-2 hover:text-orange-500">
+                <PrismicLink field={item.link}>
+                  <PrismicText field={item.label} />
+                </PrismicLink>
+              </li>
+            ),
+          )}
           <li className="py-2 hover:text-orange-500">
             <PrismicLink href="/realisations">Nos Réalisations</PrismicLink>
           </li>
           <li className="py-2">
             <PrismicLink
               href="/contact"
-              className="text-white bg-gradient-to-br from-pink-500 to-orange-500 hover:from-pink-400 hover:to-orange-400 hover:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              className="rounded-lg bg-gradient-to-br from-pink-500 to-orange-500 px-5 py-2.5 text-center text-sm font-medium text-white hover:from-pink-400 hover:to-orange-400 hover:text-white focus:ring-4 focus:ring-pink-200 focus:outline-none"
             >
               Contactez nous
             </PrismicLink>
           </li>
           <li className="py-2">
-            <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+            <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
               <a
-                href={process.env.FACEBOOK_URL}
+                href={facebookUrl}
                 target="_blank"
                 className="text-blue-500 hover:text-orange-500"
                 rel="noreferrer"
               >
                 <svg
-                  className="w-8 h-8"
+                  className="h-8 w-8"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -94,24 +102,26 @@ export const Header = ({ navigation }: { navigation: PrismicDocument }) => {
         className={
           !active
             ? "hidden"
-            : "md:hidden absolute text-sm right-0 z-10 w-full origin-top-right p-4 mt-2 bg-gray-50 rounded-lg border border-gray-100"
+            : "absolute right-0 z-10 mt-2 w-full origin-top-right rounded-lg border border-gray-100 bg-gray-50 p-4 text-sm md:hidden"
         }
       >
-        {navigation.data?.links.map((item: any) => (
-          <li
-            key={item.label}
-            className="py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100"
-          >
-            <PrismicLink field={item.link}>
-              <PrismicText field={item.label} />
-            </PrismicLink>
-          </li>
-        ))}
-        <li className="py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100">
+        {navigation.data?.links.map(
+          (item: Content.NavigationDocumentDataLinksItem) => (
+            <li
+              key={item.label}
+              className="rounded py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-100"
+            >
+              <PrismicLink field={item.link}>
+                <PrismicText field={item.label} />
+              </PrismicLink>
+            </li>
+          ),
+        )}
+        <li className="rounded py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-100">
           <PrismicLink href="/realisations">Nos Réalisations</PrismicLink>
         </li>
-        <li className="py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100">
-          <PrismicLink href="/src/app/contact">Contact</PrismicLink>
+        <li className="rounded py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-100">
+          <PrismicLink href="/contact">Contact</PrismicLink>
         </li>
       </ul>
     </div>
