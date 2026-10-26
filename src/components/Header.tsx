@@ -9,6 +9,7 @@ import { useState } from "react";
 import {
   CloseIcon,
   ExternalIcon,
+  FacebookIcon,
   InstagramIcon,
   MenuIcon,
 } from "@/components/icons";
@@ -29,17 +30,26 @@ export const Logo = ({ className }: { className?: string }) => (
       className="size-11 md:size-14"
     />
     <span className="flex flex-col leading-none">
-      <span className="font-serif text-base tracking-[0.06em] whitespace-nowrap text-anthracite uppercase sm:text-xl sm:tracking-[0.12em] md:text-2xl">
+      <span className="font-serif text-base tracking-[0.06em] whitespace-nowrap text-anthracite uppercase sm:text-xl sm:tracking-[0.12em] md:text-2xl lg:text-xl xl:text-2xl">
         Eau BN Piscines
       </span>
-      <span className="mt-1 hidden text-[0.65rem] tracking-[0.3em] text-petrole/80 uppercase sm:block">
+      <span className="mt-1 hidden text-[0.65rem] tracking-[0.3em] whitespace-nowrap text-petrole/80 uppercase sm:block lg:tracking-[0.2em] xl:tracking-[0.3em]">
         Étanchéité · Rénovation
       </span>
     </span>
   </Link>
 );
 
-export const Header = ({ instagramUrl }: { instagramUrl: string }) => {
+const socialLinkClassName =
+  "inline-flex size-9 items-center justify-center rounded-full text-anthracite transition-colors hover:bg-sable-clair hover:text-petrole";
+
+export const Header = ({
+  instagramUrl,
+  facebookUrl,
+}: {
+  instagramUrl: string;
+  facebookUrl?: string;
+}) => {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -52,7 +62,7 @@ export const Header = ({ instagramUrl }: { instagramUrl: string }) => {
         <Logo />
 
         <nav aria-label="Navigation principale" className="hidden lg:block">
-          <ul className="flex items-center gap-7 text-sm">
+          <ul className="flex items-center gap-5 text-sm xl:gap-7">
             {navigation.map((item) => (
               <li key={item.href}>
                 <Link
@@ -72,15 +82,39 @@ export const Header = ({ instagramUrl }: { instagramUrl: string }) => {
         </nav>
 
         <div className="flex items-center gap-2">
+          <div className="hidden items-center lg:flex">
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={socialLinkClassName}
+            >
+              <InstagramIcon className="size-5" />
+              <span className="sr-only">Instagram</span>
+            </a>
+            {facebookUrl && (
+              <a
+                href={facebookUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={socialLinkClassName}
+              >
+                <FacebookIcon className="size-5" />
+                <span className="sr-only">Facebook</span>
+              </a>
+            )}
+          </div>
           <a
             href={site.nuancier.url}
             target="_blank"
             rel="noreferrer"
             title={site.nuancier.label}
-            className="inline-flex items-center gap-2 rounded-md bg-petrole px-3 py-2 text-xs font-medium text-white transition-colors hover:bg-petrole-fonce sm:px-4 sm:py-2.5 sm:text-sm"
+            className="inline-flex items-center gap-2 rounded-md bg-petrole px-3 py-2 text-xs font-medium whitespace-nowrap text-white transition-colors hover:bg-petrole-fonce sm:px-4 sm:py-2.5 sm:text-sm"
           >
-            <span className="sm:hidden">Nuancier</span>
-            <span className="hidden sm:inline">{site.nuancier.shortLabel}</span>
+            <span className="sm:hidden lg:inline xl:hidden">Nuancier</span>
+            <span className="hidden sm:inline lg:hidden xl:inline">
+              {site.nuancier.shortLabel}
+            </span>
             <ExternalIcon className="size-3.5" />
           </a>
           <button
@@ -145,6 +179,17 @@ export const Header = ({ instagramUrl }: { instagramUrl: string }) => {
               <InstagramIcon className="size-5" />
               Suivez-nous sur Instagram
             </a>
+            {facebookUrl && (
+              <a
+                href={facebookUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-anthracite"
+              >
+                <FacebookIcon className="size-5" />
+                Retrouvez-nous sur Facebook
+              </a>
+            )}
           </div>
         </nav>
       </div>

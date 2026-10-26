@@ -42,7 +42,10 @@ export default function RootLayout({
     <html lang="fr" className={`${cormorant.variable} ${inter.variable}`}>
       <GoogleTagManager gtmId={process.env.GTAG_ID ?? ""} />
       <body className="flex min-h-svh flex-col">
-        <Header instagramUrl={site.instagramUrl} />
+        <Header
+          instagramUrl={site.instagramUrl}
+          facebookUrl={site.facebookUrl}
+        />
         <main className="flex-1">{children}</main>
         <Footer />
         <ToastContainer
