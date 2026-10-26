@@ -30,7 +30,7 @@ export const Logo = ({ className }: { className?: string }) => (
       className="size-11 md:size-14"
     />
     <span className="flex flex-col leading-none">
-      <span className="font-serif text-base tracking-[0.06em] whitespace-nowrap text-anthracite uppercase sm:text-xl sm:tracking-[0.12em] md:text-2xl lg:text-xl xl:text-2xl">
+      <span className="font-serif text-lg tracking-[0.08em] whitespace-nowrap text-anthracite uppercase sm:text-xl sm:tracking-[0.12em] md:text-2xl lg:text-xl xl:text-2xl">
         Eau BN Piscines
       </span>
       <span className="mt-1 hidden text-[0.65rem] tracking-[0.3em] whitespace-nowrap text-petrole/80 uppercase sm:block lg:tracking-[0.2em] xl:tracking-[0.3em]">
@@ -109,12 +109,10 @@ export const Header = ({
             target="_blank"
             rel="noreferrer"
             title={site.nuancier.label}
-            className="inline-flex items-center gap-2 rounded-md bg-petrole px-3 py-2 text-xs font-medium whitespace-nowrap text-white transition-colors hover:bg-petrole-fonce sm:px-4 sm:py-2.5 sm:text-sm"
+            className="hidden items-center gap-2 rounded-md bg-petrole px-4 py-2.5 text-sm font-medium whitespace-nowrap text-white transition-colors hover:bg-petrole-fonce lg:inline-flex"
           >
-            <span className="sm:hidden lg:inline xl:hidden">Nuancier</span>
-            <span className="hidden sm:inline lg:hidden xl:inline">
-              {site.nuancier.shortLabel}
-            </span>
+            <span className="xl:hidden">Nuancier</span>
+            <span className="hidden xl:inline">{site.nuancier.shortLabel}</span>
             <ExternalIcon className="size-3.5" />
           </a>
           <button
