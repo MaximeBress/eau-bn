@@ -13,12 +13,7 @@ import sm from "../slicemachine.config.json";
 export const repositoryName =
   process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || sm.repositoryName;
 
-const routes: Route[] = [
-  { type: "page", path: "/:uid" },
-  { type: "achievement", path: "/realisations/:uid" },
-  { type: "settings", path: "/" },
-  { type: "navigation", path: "/" },
-];
+const routes: Route[] = [{ type: "achievement", path: "/realisations/:uid" }];
 
 export const createClient = (config: ClientConfig = {}) => {
   const client = baseCreateClient(repositoryName, {
