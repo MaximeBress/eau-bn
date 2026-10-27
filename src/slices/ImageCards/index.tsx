@@ -6,67 +6,51 @@ import {
   PrismicText,
   SliceComponentProps,
 } from "@prismicio/react";
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 
 import { Bounded } from "@/components/Bounded";
-import { ConditionalWrap } from "@/components/ConditionalWrap";
 import { Heading } from "@/components/Heading";
 
-export type ImageProps = SliceComponentProps<Content.ImageSlice>;
+export type ImageCardsProps = SliceComponentProps<Content.ImageCardsSlice>;
 
-const ImageCards: FC<ImageProps> = ({ slice }) => {
+const ImageCards: FC<ImageCardsProps> = ({ slice }) => {
   return (
-    <Bounded as="section" className="bg-white">
-      <div className="grid gap-12">
-        {isFilled.richText(slice.primary.heading) && (
-          <Heading className="text-center">
-            <PrismicText field={slice.primary.heading} />
-          </Heading>
-        )}
-        <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {slice.items.map((item: any) => (
-            <li className="grid gap-8">
+    <Bounded as="section">
+      {isFilled.richText(slice.primary.heading) && (
+        <Heading className="mb-10 text-center">
+          <PrismicText field={slice.primary.heading} />
+        </Heading>
+      )}
+      <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        {slice.items.map(
+          (item: Content.ImageCardsSliceDefaultItem, index: number) => (
+            <li key={index} className="reveal flex flex-col gap-5">
               {isFilled.image(item.image) && (
-                <div className="bg-gray-100 relative w-full aspect-[4/3]">
-                  <ConditionalWrap
-                    condition={isFilled.link(item.buttonLink)}
-                    wrap={({ children }: { children: ReactNode }) => {
-                      return (
-                        <PrismicLink
-                          field={item.buttonLink as never}
-                          tabIndex={-1}
-                        >
-                          {children}
-                        </PrismicLink>
-                      );
-                    }}
-                  >
-                    <PrismicNextImage
-                      field={item.image}
-                      fill
-                      className="object-cover"
-                      fallbackAlt=""
-                    />
-                  </ConditionalWrap>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-sable-clair">
+                  <PrismicNextImage
+                    field={item.image}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover"
+                    fallbackAlt=""
+                  />
                 </div>
               )}
-              <div className="leading-relaxed">
+              <div className="prose-eau">
                 <PrismicRichText field={item.text} />
               </div>
               {isFilled.link(item.buttonLink) && (
-                <div>
-                  <PrismicLink
-                    field={item.buttonLink}
-                    className="font-semibold"
-                  >
-                    {item.buttonText || "More Info"}
-                  </PrismicLink>
-                </div>
+                <PrismicLink
+                  field={item.buttonLink}
+                  className="font-medium text-petrole underline underline-offset-4"
+                >
+                  {item.buttonText || "En savoir plus"}
+                </PrismicLink>
               )}
             </li>
-          ))}
-        </ul>
-      </div>
+          ),
+        )}
+      </ul>
     </Bounded>
   );
 };

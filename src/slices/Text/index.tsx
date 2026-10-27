@@ -9,10 +9,12 @@ export type TextProps = SliceComponentProps<Content.TextSlice>;
 
 const Text: FC<TextProps> = ({ slice }) => {
   return (
-    <Bounded as="section" className="bg-white leading-relaxed">
+    <Bounded as="section">
       <div
         className={clsx(
-          slice.variation === "twoColumns" && "md:columns-2 md:gap-6",
+          "prose-eau max-w-3xl text-lg",
+          slice.variation === "twoColumns" &&
+            "max-w-none md:columns-2 md:gap-10",
         )}
       >
         <PrismicRichText field={slice.primary.text} />
