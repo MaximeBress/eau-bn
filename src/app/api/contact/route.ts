@@ -57,8 +57,6 @@ export async function POST(req: NextRequest) {
           ReplyTo: { Email: email },
           Subject: `[Site Eau BN] ${subject}`,
           TextPart: `L'adresse email : ${email} vous a envoyé le message suivant :\n\n${message}`,
-          TrackOpens: "disabled",
-          TrackClicks: "disabled",
         },
       ],
     }),
